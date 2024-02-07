@@ -1,0 +1,17 @@
+#login-google {
+  width: 25rem;
+  height: 5rem;
+  padding-bottom: 0.4rem;
+  transition: .3s;
+  background: var(--c1);
+  border-radius: 6px;
+  font-size: 2rem;
+  color: white;
+}
+
+#login-google:hover {
+  padding-bottom: 0.6rem;
+  background-color: transparent;
+  font-size: 2.5rem;
+  color: var(--c1);
+}
