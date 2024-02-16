@@ -42,10 +42,7 @@ export const handleGoogleLogin = async () => {
 export const handleOnAuthStateChanged = (
   setUser: (user: User | null) => void
 ) => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) setUser(user);
-    else setUser(null);
-  });
+  onAuthStateChanged(auth, (user) => (user ? setUser(user) : setUser(null)));
 };
 
 export type MessagesType = { id: string; data: DocumentData }[];
@@ -53,9 +50,9 @@ export const handleOnSnapshot = (
   setMessages: (messages: MessagesType) => void
 ) => {
   const q = query(collection(db, "messages"), orderBy("timestamp", "desc"));
-  return onSnapshot(q, (snapshot) => {
-    setMessages(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })));
-  });
+  return onSnapshot(q, (snapshot) =>
+    setMessages(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
+  );
 };
 
 export const sendMessage = async (
